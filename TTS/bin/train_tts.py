@@ -657,6 +657,10 @@ if __name__ == '__main__':
                         type=bool,
                         default=False,
                         help='Do not verify commit integrity to run training.')
+    parser.add_argument('--experiment_folder',
+                        type=str,
+                        default='',
+                        help='Do not verify commit integrity to run training.')
 
     # DISTRUBUTED
     parser.add_argument(
@@ -688,7 +692,10 @@ if __name__ == '__main__':
 
     OUT_PATH = args.continue_path
     if args.continue_path == '':
-        OUT_PATH = create_experiment_folder(c.output_path, c.run_name, args.debug)
+        if(args.experiment_folder == ''):
+            OUT_PATH = create_experiment_folder(c.output_path, c.run_name, args.debug)
+        else:
+            OUT_PATH = args.experiment_folder
 
     AUDIO_PATH = os.path.join(OUT_PATH, 'test_audios')
 
@@ -714,7 +721,7 @@ if __name__ == '__main__':
     try:
         main(args)
     except KeyboardInterrupt:
-        remove_experiment_folder(OUT_PATH)
+        # remove_experiment_folder(OUT_PATH)
         try:
             sys.exit(0)
         except SystemExit:
