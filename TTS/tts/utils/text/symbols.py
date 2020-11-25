@@ -21,7 +21,7 @@ def make_symbols(characters, phonemes, punctuations='!\'(),-.:;? ', pad='_', eos
 _pad = '_'
 _eos = '~'
 _bos = '^'
-_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!\'(),-.:;? '
+_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÈÌÒÙÁÉÍÓÚÂÊÎÔÛÃÕÇabcdefghijklmnopqrstuvwxyzàèìòùáéíóúâêîôûãõç!\'(),-.:;? '
 _punctuations = '!\'(),-.:;? '
 _phoneme_punctuations = '.!;:,?'
 
