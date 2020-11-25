@@ -690,7 +690,11 @@ if __name__ == '__main__':
     if c.apex_amp_level == 'O1':
         print("   >  apex AMP level: ", c.apex_amp_level)
 
-    OUT_PATH = args.continue_path
+    if(args.experiment_folder == ''):
+        OUT_PATH = args.continue_path
+    else:
+        OUT_PATH = args.experiment_folder
+                
     if args.continue_path == '':
         if(args.experiment_folder == ''):
             OUT_PATH = create_experiment_folder(c.output_path, c.run_name, args.debug)

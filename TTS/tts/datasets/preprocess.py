@@ -319,3 +319,36 @@ def _voxcel_x(root_path, meta_file, voxcel_idx):
 
     with open(str(cache_to), 'r') as f:
         return [x.strip().split('|') for x in f.readlines()]
+
+
+def rosana(root_path, meta_file):
+    meta_path = os.path.join(root_path, meta_file)
+    
+    items = []
+    
+    with open(meta_path, 'r', encoding= 'utf-8') as f:
+        for line in f:
+            cols = line.split(',')
+            if(cols[1] == 'text'): # The first element is header in my file
+                continue
+            wav_file = cols[0]
+            text = cols[1]
+            speaker_name = 'rosana'
+            items.append([text, wav_file, speaker_name])
+    return items
+
+def vctk_direct(root_path, meta_file):
+    meta_path = os.path.join(root_path, meta_file)
+    
+    items = []
+    
+    with open(meta_path, 'r', encoding= 'utf-8') as f:
+        for line in f:
+            cols = line.split(',')
+            if(cols[1] == 'text'): # The first element is header in my file
+                continue
+            wav_file = cols[0]
+            text = cols[1]
+            speaker_name = cols[2][:-1]  # The last char is "\n" since after this line is a breakline
+            items.append([text, wav_file, speaker_name])
+    return items
